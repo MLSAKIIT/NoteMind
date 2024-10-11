@@ -38,39 +38,39 @@ NoteMind is a Flutter application that allows users to take notes, both typed an
    
 ### Architecture Overview
 
-**Project Structure**:
+1. **Project Structure**:
    ```bash
    /note_mind
-│
-├── android
-├── ios
-├── lib
-│   ├── models
-│   │   ├── note.dart
-│   │   └── mind_map.dart
-│   ├── providers
-│   │   └── note_provider.dart
-│   ├── views
-│   │   ├── home_screen.dart
-│   │   ├── note_screen.dart
-│   │   ├── login_screen.dart
-│   │   ├── signup_screen.dart
-│   │   └── profile_screen.dart
-│   ├── widgets
-│   │   ├── note_card.dart
-│   │   ├── mind_map_widget.dart
-│   │   └── custom_text_field.dart
-│   ├── services
-│   │   └── handwriting_recognition_service.dart
-│   ├── main.dart
-│   └── utils
-│       └── database_helper.dart
-└── test
-  
+   │
+   ├── android
+   ├── ios
+   ├── lib
+   │   ├── models
+   │   │   ├── note.dart
+   │   │   └── mind_map.dart
+   │   ├── providers
+   │   │   └── note_provider.dart
+   │   ├── views
+   │   │   ├── home_screen.dart
+   │   │   ├── note_screen.dart
+   │   │   ├── login_screen.dart
+   │   │   ├── signup_screen.dart
+   │   │   └── profile_screen.dart
+   │   ├── widgets
+   │   │   ├── note_card.dart
+   │   │   ├── mind_map_widget.dart
+   │   │   └── custom_text_field.dart
+   │   ├── services
+   │   │   └── handwriting_recognition_service.dart
+   │   ├── main.dart
+   │   └── utils
+   │       └── database_helper.dart
+   └── test
+   
 ### Design Patterns
- - **Provider**: For state management
- - **Repository Pattern**: To manage data operations.
- 
+- **Provider**: For state management
+- **Repository Pattern**: To manage data operations.
+
 ### Features
 
 **Core Features**
