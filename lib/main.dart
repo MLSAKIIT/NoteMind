@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hacktoberxmlsa_app/services/colors.dart';
 import 'package:hacktoberxmlsa_app/views/homePage.dart';
 import 'package:hacktoberxmlsa_app/views/splashScreen.dart';
 
@@ -16,8 +17,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
+    final ThemeData systemDarkTheme = ThemeData.dark();
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: systemDarkTheme.copyWith(
+          primaryColor: primaryColorDark,
+      ),
       initialRoute: '/splash',
       routes: {
         '/':(context) => const HomePage(),

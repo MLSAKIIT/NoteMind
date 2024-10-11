@@ -31,7 +31,7 @@ class _SignUpPageState extends State<SignUpPage> {
           children: [
             SizedBox(height: screenHeight * 0.02),
             const Text(
-              "NOTES",
+              "NoteMind",
               style: TextStyle(
                 fontSize: 35,
                 color: Colors.white,

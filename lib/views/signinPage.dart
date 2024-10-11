@@ -29,7 +29,7 @@ class _SignInPageState extends State<SignInPage> {
           children: [
             SizedBox(height: screenHeight * 0.02),
             const Text(
-              "NOTES",
+              "NoteMind",
               style: TextStyle(
                 fontSize: 35,
                 color: Colors.white,
@@ -92,7 +92,10 @@ class _SignInPageState extends State<SignInPage> {
               ),
             ),
             SizedBox(height: screenHeight*0.02,),
-            CustomButton(onPressed: () {}, text: "Login"),
+            CustomButton(
+              onPressed: () {}, 
+              text: "Login"
+            ),
           ],
         ),
       ),
