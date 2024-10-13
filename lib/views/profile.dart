@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hacktoberxmlsa_app/views/homePage.dart';
 import 'package:hacktoberxmlsa_app/widgets/button.dart';
 import 'package:hacktoberxmlsa_app/widgets/textfield.dart';
 
@@ -23,7 +24,22 @@ class _ProfilePageState extends State<ProfilePage> {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
+          }, 
+          icon: Icon(Icons.arrow_back_ios_new_rounded),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+
+            },
+            icon: const Icon(Icons.light_mode),
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
