@@ -1,24 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:hacktoberxmlsa_app/services/colors.dart';
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   //final String hintText;
+  final Function(String)? onChanged;
 
   const CustomTextField({
     Key? key,
     required this.controller,
     //required this.hintText,
+    this.onChanged,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
+      onChanged: onChanged,
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(
-            color: Color(0xFF4E1588),
+            color: purple,
             width: 1,
           ),
         ),

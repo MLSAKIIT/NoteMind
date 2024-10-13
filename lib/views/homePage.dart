@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:hacktoberxmlsa_app/services/colors.dart';
 import 'package:hacktoberxmlsa_app/views/noteCard.dart';
 import 'package:hacktoberxmlsa_app/views/notePage.dart';
 import 'package:hacktoberxmlsa_app/views/profile.dart';
@@ -73,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                     suffixIcon: Icon(Icons.search),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(25), 
-                      borderSide: BorderSide(width: 2, color: Color(0xFF4E1588)),
+                      borderSide: BorderSide(width: 2, color: purple),
                     ),
                     hintText: 'Search your notes here',
                     hintStyle: TextStyle(color: Colors.white60, fontWeight: FontWeight.normal)
@@ -117,16 +116,15 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 SizedBox(height: screenHeight * 0.01),
-                // Non-scrollable grid (2 rows, 2 columns)
                 Expanded(
                   child: GridView.builder(
-                    physics: NeverScrollableScrollPhysics(), // Make it non-scrollable
+                    physics: NeverScrollableScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2, // 2 columns
-                      crossAxisSpacing: 10, // Spacing between columns
-                      mainAxisSpacing: 10, // Spacing between rows
+                      crossAxisCount: 2, 
+                      crossAxisSpacing: 10, 
+                      mainAxisSpacing: 10,
                     ),
-                    itemCount: 4, // Fixed 4 dummy notes
+                    itemCount: 4,
                     itemBuilder: (context, index) {
                       return NoteCard(
                         onTap: () {
@@ -153,7 +151,7 @@ class _HomePageState extends State<HomePage> {
             
               },
               child: ImageIcon(AssetImage('assets/images/mind-map-icon.png')),
-              backgroundColor: Color(0xFF4E1588),
+              backgroundColor: purple,
               shape: CircleBorder(),
             ),
           ),
@@ -165,7 +163,7 @@ class _HomePageState extends State<HomePage> {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => NotePage()));
               },
               child: Icon(Icons.add),
-              backgroundColor: Color(0xFF4E1588),
+              backgroundColor: purple,
               shape: CircleBorder(),
             )
           ),

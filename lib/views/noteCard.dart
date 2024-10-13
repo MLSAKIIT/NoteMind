@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hacktoberxmlsa_app/services/colors.dart';
 
 class NoteCard extends StatelessWidget {
   final String noteTitle;
@@ -19,7 +20,7 @@ class NoteCard extends StatelessWidget {
         width: screenWidth/3,
         height: screenWidth/3,
         decoration: BoxDecoration(
-          color: Color.fromARGB(255, 52, 45, 58),
+          color: cardColor,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
