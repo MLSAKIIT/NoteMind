@@ -81,7 +81,7 @@ NoteMind is a Flutter application that allows users to take notes, both typed an
 - **Search Functionality**: Quickly find notes by keywords.
 - **Collaborative Functionality**: Users can collaborate with others in real-time to create, edit, and organize notes together.
 
-**User Intterface**
+**User Interface**
 
 - **Home Screen**: Displays a list of notes and buttons for creating new notes or mind maps.
 - **Note Screen**: Interface for creating/editing notes, including options for handwriting input.
