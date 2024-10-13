@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hacktoberxmlsa_app/views/homePage.dart';
+import 'package:hacktoberxmlsa_app/views/intivePopPage.dart';
 
 class NotePage extends StatefulWidget {
 
@@ -39,7 +40,7 @@ class _NotePageState extends State<NotePage> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
+              showInvitePopup(context);
             },
             icon: const Icon(Icons.more_horiz_rounded),
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hacktoberxmlsa_app/services/colors.dart';
 
 class CustomButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -15,7 +16,7 @@ class CustomButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(Color(0xFF4E1588)),
+        backgroundColor: MaterialStateProperty.all(purple),
         textStyle: MaterialStateProperty.all(
           const TextStyle(color: Colors.white),
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hacktoberxmlsa_app/providers/userProfile.dart';
+import 'package:hacktoberxmlsa_app/services/colors.dart';
 import 'package:hacktoberxmlsa_app/views/homePage.dart';
 import 'package:hacktoberxmlsa_app/widgets/button.dart';
 import 'package:hacktoberxmlsa_app/widgets/textfield.dart';
@@ -77,7 +78,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
-                            color: Color(0xFF4E1588),
+                            color: purple,
                             spreadRadius: screenWidth*0.02,
                             blurRadius: screenWidth*0.1,
                             offset: Offset(0, 0),
