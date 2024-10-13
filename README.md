@@ -3,7 +3,7 @@
 ## Introduction
 
 **Project Overview**:  
-NoteMind is a Flutter application that allows users to take notes, both typed and handwritten, and visually organize their thoughts using a mind map. This application is designed for students, professionals, and anyone looking to improve their productivity and organization.
+NoteMind is a Flutter application that allows users to take notes, both typed and handwritten, visually organize their thoughts using mind maps, and collaborate with other users to work together. This application is designed for students, professionals, and anyone looking to improve their productivity and organization.
 
 ## Technologies Used
 
@@ -79,6 +79,7 @@ NoteMind is a Flutter application that allows users to take notes, both typed an
 - **Handwritten Input**: Capture handwritten notes using a stylus or finger, which are converted to text using handwriting recognition.
 - **Mind Mapping**: Visual representation of thoughts linked to notes.
 - **Search Functionality**: Quickly find notes by keywords.
+- **Collaborative Functionality**: Users can collaborate with others in real-time to create, edit, and organize notes together.
 
 **User Intterface**
 
@@ -157,20 +158,10 @@ This project is licensed under the MIT License. See the LICENSE file for details
    - TensorFlow Lite Flutter Plugin
 
 ### Issues :
-**Login Page**: 
-   - Password obscure
-   - Data collection
-   - TextField border color
-**Sign up Page**:
-   - Password and confirm password (password confirmation check)
-   - Password length and characters verification
-   - TextField border color
-**Profile Page**:
-   - Editing profile details
-   - Back button
-**Routing**
-**Theme**:
    - Light theme
+   - Password obscure
+   - Password Verification
+   - 
 
 
 
