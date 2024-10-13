@@ -161,7 +161,13 @@ This project is licensed under the MIT License. See the LICENSE file for details
    - Light theme
    - Password obscure
    - Password Verification
-   - 
+
+## Backent Issues: 
+   - Create routes and controllers for update user profile. Include roll number and name.
+   - Create search route for finding notes using keywords using the notes model.
+   - Create a model of mind maps including CRUD operations for creating new mind maps. Make sure keep track of related note ids.
+   - Implement rate limiters and cors for the server
+   - Implement Collaborative functionality using websockets for sending changes realtime.
 
 
 
