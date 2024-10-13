@@ -159,10 +159,10 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 ### Issues :
    - Light theme
-   - Password obscure
-   - Password Verification
+   - Password obscure and verification
+   - Backend + Frontend Integration (Connect API for data sync).
 
-   - Backent Issues :
+   - Backend Issues :
       - Create routes and controllers for update user profile. Include roll number and name.
       - Create search route for finding notes using keywords using the notes model.
       - Create a model of mind maps including CRUD operations for creating new mind maps. Make sure keep track of related note ids.
