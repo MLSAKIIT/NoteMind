@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hacktoberxmlsa_app/providers/userProfile.dart';
 import 'package:hacktoberxmlsa_app/views/homePage.dart';
 import 'package:hacktoberxmlsa_app/widgets/button.dart';
 import 'package:hacktoberxmlsa_app/widgets/textfield.dart';
+import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -17,8 +19,28 @@ class _ProfilePageState extends State<ProfilePage> {
   final TextEditingController nameController= TextEditingController();
   final TextEditingController rollController= TextEditingController();
 
+  String savedName = '';
+  String savedRoll = '';
+  String savedEmail = '';
+  String savedPassword = '';
+
+  void saveProfileDetails() {
+    setState(() {
+      savedName = nameController.text;
+      savedRoll = rollController.text;
+      savedEmail = emailController.text;
+      savedPassword = passwordController.text;
+    });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Profile details saved successfully!')),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+
+    final userProfile = Provider.of<UserProfileProvider>(context);
 
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
@@ -91,6 +113,9 @@ class _ProfilePageState extends State<ProfilePage> {
               SizedBox(height: screenHeight*0.004,),
               CustomTextField(
                 controller: nameController,
+                onChanged: (value) {
+                  userProfile.updateName(value);
+                }
               ),
               SizedBox(height: screenHeight*0.02,),
               Text(
@@ -102,6 +127,9 @@ class _ProfilePageState extends State<ProfilePage> {
               SizedBox(height: screenHeight*0.004,),
               CustomTextField(
                 controller: rollController,
+                onChanged: (value) {
+                  userProfile.updateRoll(value);
+                },
               ),
               SizedBox(height: screenHeight*0.02,),
               Text(
@@ -113,6 +141,9 @@ class _ProfilePageState extends State<ProfilePage> {
               SizedBox(height: screenHeight*0.004,),
               CustomTextField(
                 controller: emailController,
+                onChanged: (value) {
+                  userProfile.updateEmail(value);
+                },
               ),
               SizedBox(height: screenHeight*0.02,),
               Text(
@@ -126,7 +157,13 @@ class _ProfilePageState extends State<ProfilePage> {
                 controller: passwordController,
               ),
               SizedBox(height: screenHeight*0.04,),
-              CustomButton(onPressed: () {}, text: "Save"),
+              CustomButton(
+                onPressed: () {
+                  saveProfileDetails;
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
+                }, 
+                text: "Save"
+              ),
             ],
           ),
         ),
