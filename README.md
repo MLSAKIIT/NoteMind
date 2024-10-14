@@ -25,7 +25,7 @@ NoteMind is a Flutter application that allows users to take notes, both typed an
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-repo/note_mind.git
+   git clone https://github.com/MLSAKIIT/NoteMind.git
    cd note_mind
 
 2. **Install dependencies**:
