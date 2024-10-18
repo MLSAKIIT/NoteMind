@@ -10,14 +10,13 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController nameController= TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  bool _isPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
-
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
@@ -31,18 +30,11 @@ class _SignInPageState extends State<SignInPage> {
               SizedBox(height: screenHeight * 0.02),
               const Text(
                 "NoteMind",
-                style: TextStyle(
-                  fontSize: 35,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold
-                ),
+                style: TextStyle(fontSize: 35, color: Colors.white, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: screenHeight * 0.1),
               Padding(
-                padding: EdgeInsets.symmetric(
-                  vertical: screenHeight*0.025, 
-                  horizontal: screenWidth*0.05
-                ),
+                padding: EdgeInsets.symmetric(vertical: screenHeight * 0.025, horizontal: screenWidth * 0.05),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -50,53 +42,80 @@ class _SignInPageState extends State<SignInPage> {
                       "  Name",
                       style: TextStyle(
                         fontSize: 20,
-                        color:Colors.white,
+                        color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: screenHeight*0.005,),
+                    SizedBox(
+                      height: screenHeight * 0.005,
+                    ),
                     CustomTextField(
                       controller: nameController,
                       //hintText: 'Enter your name',
                     ),
-                    SizedBox(height: screenHeight*0.02,),
+                    SizedBox(
+                      height: screenHeight * 0.02,
+                    ),
                     Text(
                       "  Email",
                       textAlign: TextAlign.start,
                       style: TextStyle(
                         fontSize: 20,
-                        color:Colors.white,
+                        color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: screenHeight*0.005,),
+                    SizedBox(
+                      height: screenHeight * 0.005,
+                    ),
                     CustomTextField(
                       controller: emailController,
                       //hintText: 'Enter your email',
                     ),
-                    SizedBox(height: screenHeight*0.02,),
+                    SizedBox(
+                      height: screenHeight * 0.02,
+                    ),
                     Text(
                       "  Password",
                       style: TextStyle(
                         fontSize: 20,
-                        color:Colors.white,
+                        color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: screenHeight*0.005,),
-                    CustomTextField(
-                      controller: passwordController,
-                      //hintText: 'password',
+                    SizedBox(
+                      height: screenHeight * 0.005,
                     ),
-                    SizedBox(height: screenHeight*0.02,),
+                    Stack(
+                      children: [
+                        CustomTextField(
+                          controller: passwordController,
+                          obscureText: !_isPasswordVisible,
+                        ),
+                        Positioned(
+                            right: 0,
+                            top: 0,
+                            bottom: 0,
+                            child: IconButton(
+                              icon: Icon(_isPasswordVisible ? Icons.visibility : Icons.visibility_off),
+                              onPressed: () {
+                                setState(() {
+                                  _isPasswordVisible = !_isPasswordVisible;
+                                });
+                              },
+                            ))
+                      ],
+                    ),
+                    SizedBox(
+                      height: screenHeight * 0.02,
+                    ),
                   ],
                 ),
               ),
-              SizedBox(height: screenHeight*0.02,),
-              CustomButton(
-                onPressed: () {}, 
-                text: "Login"
+              SizedBox(
+                height: screenHeight * 0.02,
               ),
+              CustomButton(onPressed: () {}, text: "Login"),
             ],
           ),
         ),
