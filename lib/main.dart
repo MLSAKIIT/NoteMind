@@ -7,6 +7,7 @@ import 'package:hacktoberxmlsa_app/views/splashScreen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
@@ -25,17 +26,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final ThemeData systemDarkTheme = ThemeData.dark();
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: systemDarkTheme.copyWith(
-          primaryColor: primaryColorDark,
+        primaryColor: primaryColorDark,
       ),
       initialRoute: '/splash',
       routes: {
-        '/':(context) => const HomePage(),
+        '/': (context) => const HomePage(),
         '/splash': (context) => SplashScreen(),
       },
     );

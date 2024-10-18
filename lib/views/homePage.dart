@@ -14,7 +14,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
@@ -38,11 +37,13 @@ class _HomePageState extends State<HomePage> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {return ProfilePage();}));
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+                    return ProfilePage();
+                  }));
                 },
                 child: CircleAvatar(
                   foregroundImage: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnDNmpgYnTP4ELmIob69uKE1O0Rbrotna00g&s'),
-                  radius: screenWidth*0.05,
+                  radius: screenWidth * 0.05,
                 ),
               ),
             ],
@@ -56,7 +57,9 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: screenHeight*0.02,),
+                SizedBox(
+                  height: screenHeight * 0.02,
+                ),
                 TextField(
                   onChanged: (value) {
                     setState(() {
@@ -64,30 +67,33 @@ class _HomePageState extends State<HomePage> {
                     });
                   },
                   decoration: InputDecoration(
-                    filled: false,
-                    contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                    labelStyle: TextStyle(
-                      color: Colors.white,
-                    ),
-                    suffixIcon: Icon(Icons.search),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25), 
-                      borderSide: BorderSide(width: 2, color: purple),
-                    ),
-                    hintText: 'Search your notes here',
-                    hintStyle: TextStyle(color: Colors.white60, fontWeight: FontWeight.normal)
-                  ),
+                      filled: false,
+                      contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      labelStyle: TextStyle(
+                        color: Colors.white,
+                      ),
+                      suffixIcon: Icon(Icons.search),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                        borderSide: BorderSide(width: 2, color: purple),
+                      ),
+                      hintText: 'Search your notes here',
+                      hintStyle: TextStyle(color: Colors.white60, fontWeight: FontWeight.normal)),
                 ),
-                SizedBox(height: screenHeight*0.02,),
+                SizedBox(
+                  height: screenHeight * 0.02,
+                ),
                 Text(
                   'Saved Notes',
                   style: TextStyle(
                     fontSize: 20,
                   ),
                 ),
-                SizedBox(height: screenHeight*0.006,),
+                SizedBox(
+                  height: screenHeight * 0.006,
+                ),
                 Container(
-                  height: screenWidth/2.8,
+                  height: screenWidth / 2.8,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 10,
@@ -95,15 +101,17 @@ class _HomePageState extends State<HomePage> {
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: NoteCard(
-                          noteTitle: 'Note ${index + 1}',
-                          noteContent: 'This is the content of note ${index + 1}',
-                          onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => NotePage(
-                              title: 'Note ${index +1}',
-                              content: 'This is the content of note ${index+1}',
-                            )));
-                          }
-                        ),
+                            noteTitle: 'Note ${index + 1}',
+                            noteContent: 'This is the content of note ${index + 1}',
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => NotePage(
+                                            title: 'Note ${index + 1}',
+                                            content: 'This is the content of note ${index + 1}',
+                                          )));
+                            }),
                       );
                     },
                   ),
@@ -120,22 +128,24 @@ class _HomePageState extends State<HomePage> {
                   child: GridView.builder(
                     physics: NeverScrollableScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2, 
-                      crossAxisSpacing: 10, 
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 10,
                       mainAxisSpacing: 10,
                     ),
                     itemCount: 4,
                     itemBuilder: (context, index) {
                       return NoteCard(
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => NotePage(
-                              title: 'Note ${index +1}',
-                              content: 'This is the content of note ${index+1}',
-                            )));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => NotePage(
+                                        title: 'Note ${index + 1}',
+                                        content: 'This is the content of note ${index + 1}',
+                                      )));
                         },
                         noteTitle: 'Quick Note ${index + 1}',
-                        noteContent:
-                            'This is a quick note. Content preview for note ${index + 1}.',
+                        noteContent: 'This is a quick note. Content preview for note ${index + 1}.',
                       );
                     },
                   ),
@@ -144,29 +154,28 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Positioned(
-            bottom: screenHeight*0.02,
-            left: screenWidth*0.05,
+            bottom: screenHeight * 0.02,
+            left: screenWidth * 0.05,
             child: FloatingActionButton(
-              onPressed: () {
-            
-              },
+              onPressed: () {},
               child: ImageIcon(AssetImage('assets/images/mind-map-icon.png')),
               backgroundColor: purple,
               shape: CircleBorder(),
+              heroTag: "btn1",
             ),
           ),
           Positioned(
-            bottom: screenHeight*0.02,
-            right: screenWidth*0.05,
-            child: FloatingActionButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => NotePage()));
-              },
-              child: Icon(Icons.add),
-              backgroundColor: purple,
-              shape: CircleBorder(),
-            )
-          ),
+              bottom: screenHeight * 0.02,
+              right: screenWidth * 0.05,
+              child: FloatingActionButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => NotePage()));
+                },
+                child: Icon(Icons.add),
+                backgroundColor: purple,
+                shape: CircleBorder(),
+                heroTag: "btn2",
+              )),
         ],
       ),
     );
