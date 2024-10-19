@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hacktoberxmlsa_app/views/homePage.dart';
 import 'package:hacktoberxmlsa_app/widgets/button.dart';
 import 'package:hacktoberxmlsa_app/widgets/textRegistrationPage.dart';
 import 'package:hacktoberxmlsa_app/widgets/textfield.dart';
+import 'package:hacktoberxmlsa_app/utils/auth_utils.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -16,6 +18,21 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
   bool _isPasswordVisible = false;
+
+  void handleSignUp() {
+    String password = passwordController.text;
+    String? validationMessage = AuthUtils.validatePassword(password);
+    if (validationMessage != null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(validationMessage)),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Signed Up successfully!')),
+      );
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,10 +83,6 @@ class _SignUpPageState extends State<SignUpPage> {
                     SizedBox(
                       height: screenHeight * 0.005,
                     ),
-                    // CustomTextField(
-                    //   controller: passwordController,
-                    //   //hintText: 'password',
-                    // ),
                     Stack(
                       children: [
                         CustomTextField(
@@ -111,7 +124,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: screenHeight * 0.02,
               ),
               CustomButton(
-                onPressed: () {},
+                onPressed: handleSignUp,
                 text: "Sign Up",
               ),
             ],

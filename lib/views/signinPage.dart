@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hacktoberxmlsa_app/utils/auth_utils.dart';
+import 'package:hacktoberxmlsa_app/views/homePage.dart';
 import 'package:hacktoberxmlsa_app/widgets/button.dart';
 import 'package:hacktoberxmlsa_app/widgets/textfield.dart';
 
@@ -14,6 +16,21 @@ class _SignInPageState extends State<SignInPage> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   bool _isPasswordVisible = false;
+
+  void handleSignIn() {
+    String password = passwordController.text;
+    String? validationMessage = AuthUtils.validatePassword(password);
+    if (validationMessage != null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(validationMessage)),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Signed In successfully!')),
+      );
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +132,7 @@ class _SignInPageState extends State<SignInPage> {
               SizedBox(
                 height: screenHeight * 0.02,
               ),
-              CustomButton(onPressed: () {}, text: "Login"),
+              CustomButton(onPressed: handleSignIn, text: "Login"),
             ],
           ),
         ),

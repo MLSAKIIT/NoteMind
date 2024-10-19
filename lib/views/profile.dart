@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hacktoberxmlsa_app/providers/userProfile.dart';
 import 'package:hacktoberxmlsa_app/services/colors.dart';
+import 'package:hacktoberxmlsa_app/utils/auth_utils.dart';
 import 'package:hacktoberxmlsa_app/views/homePage.dart';
 import 'package:hacktoberxmlsa_app/widgets/button.dart';
 import 'package:hacktoberxmlsa_app/widgets/textfield.dart';
@@ -25,35 +26,14 @@ class _ProfilePageState extends State<ProfilePage> {
   String savedPassword = '';
   bool _isPasswordVisible = false;
 
-  String? validatePassword(String password) {
-    if (password.length < 8) {
-      return 'Password must be at least 8 characters long';
-    }
-
-    if (!RegExp(r'[A-Z]').hasMatch(password)) {
-      return 'Password must contain at least one uppercase letter';
-    }
-
-    if (!RegExp(r'[a-z]').hasMatch(password)) {
-      return 'Password must contain at least one lowercase letter';
-    }
-
-    if (!RegExp(r'[0-9]').hasMatch(password)) {
-      return 'Password must contain at least one digit';
-    }
-
-    return null;
-  }
-
   void saveProfileDetails() {
     String password = passwordController.text;
-    String? validationMessage = validatePassword(password);
+    String? validationMessage = AuthUtils.validatePassword(password);
 
     if (validationMessage != null) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(validationMessage)),
       );
-      print("Vlaidation filed");
     } else {
       setState(() {
         savedName = nameController.text;
@@ -65,7 +45,6 @@ class _ProfilePageState extends State<ProfilePage> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Profile details saved successfully!')),
       );
-      print("Vlaidation pass");
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
     }
   }
