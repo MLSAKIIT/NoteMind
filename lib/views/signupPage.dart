@@ -21,6 +21,21 @@ class _SignUpPageState extends State<SignUpPage> {
 
   void handleSignUp() {
     String password = passwordController.text;
+    String confirmPassword = confirmPasswordController.text;
+    if (password.trim().isEmpty || confirmPassword.trim().isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Please fill password and confirm password fields!')),
+      );
+      return;
+    }
+
+    if (password != confirmPassword) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Password and confirm password do not match!')),
+      );
+      return;
+    }
+
     String? validationMessage = AuthUtils.validatePassword(password);
     if (validationMessage != null) {
       ScaffoldMessenger.of(context).showSnackBar(
