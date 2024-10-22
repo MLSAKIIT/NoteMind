@@ -18,6 +18,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
   bool _isPasswordVisible = false;
+  bool _isPasswordConfirmVisible = false;
 
   void handleSignUp() {
     String password = passwordController.text;
@@ -125,9 +126,25 @@ class _SignUpPageState extends State<SignUpPage> {
                     SizedBox(
                       height: screenHeight * 0.005,
                     ),
-                    CustomTextField(
-                      controller: confirmPasswordController,
-                      //hintText: 'password',
+                    Stack(
+                      children: [
+                        CustomTextField(
+                          controller: confirmPasswordController,
+                          obscureText: !_isPasswordConfirmVisible,
+                        ),
+                        Positioned(
+                            right: 0,
+                            top: 0,
+                            bottom: 0,
+                            child: IconButton(
+                              icon: Icon(_isPasswordConfirmVisible ? Icons.visibility : Icons.visibility_off),
+                              onPressed: () {
+                                setState(() {
+                                  _isPasswordConfirmVisible = !_isPasswordConfirmVisible;
+                                });
+                              },
+                            ))
+                      ],
                     ),
                     SizedBox(
                       height: screenHeight * 0.02,
