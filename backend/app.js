@@ -2,6 +2,9 @@ const express = require("express");
 const connectDB = require("./config/database");
 const authRoutes = require("./routes/auth");
 const noteRoutes = require("./routes/notes");
+const cookieParser = require('cookie-parser');
+const morgan = require('morgan');
+const limiter = require('./middleware/rate-limit')
 
 const app = express();
 
@@ -10,6 +13,9 @@ connectDB();
 
 // Middleware
 app.use(express.json());
+app.use(cookieParser());
+app.use(morgan('dev'));
+app.use(limiter);
 
 // Routes
 app.use("/api/auth", authRoutes);
