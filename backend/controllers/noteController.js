@@ -64,3 +64,21 @@ exports.deleteNote = async (req, res) => {
     res.status(500).send("Server error");
   }
 };
+
+exports.searchNotes = async (req, res) => {
+  try {
+    const { keyword } = req.query;
+    const notes = await Note.find({
+      user: req.user.id,
+      $or: [
+        { title: { $regex: keyword, $options: "i" } },
+        { content: { $regex: keyword, $options: "i" } },
+      ],
+    }).sort({ createdAt: -1 });
+
+    res.json(notes);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+};
