@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:hacktoberxmlsa_app/providers/theme_provider.dart';
 import 'package:hacktoberxmlsa_app/providers/userProfile.dart';
 import 'package:hacktoberxmlsa_app/services/colors.dart';
 import 'package:hacktoberxmlsa_app/utils/auth_utils.dart';
@@ -7,7 +8,7 @@ import 'package:hacktoberxmlsa_app/views/homePage.dart';
 import 'package:hacktoberxmlsa_app/widgets/button.dart';
 import 'package:hacktoberxmlsa_app/widgets/textfield.dart';
 import 'package:provider/provider.dart';
-import 'package:image_picker/image_picker.dart'; 
+import 'package:image_picker/image_picker.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -67,7 +68,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     final userProfile = Provider.of<UserProfileProvider>(context);
-    
+
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
@@ -82,8 +83,14 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.light_mode),
+            onPressed: () {
+              Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+            },
+            icon: Icon(
+              Provider.of<ThemeProvider>(context).isLightTheme
+                  ? Icons.light_mode
+                  : Icons.dark_mode,
+            ),
           ),
         ],
       ),

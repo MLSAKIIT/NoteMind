@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hacktoberxmlsa_app/providers/theme_provider.dart';
 import 'package:hacktoberxmlsa_app/views/homePage.dart';
 import 'package:hacktoberxmlsa_app/views/intivePopPage.dart';
+import 'package:provider/provider.dart';
 
 class NotePage extends StatefulWidget {
-
   final String? title;
   final String? content;
 
@@ -14,13 +15,12 @@ class NotePage extends StatefulWidget {
 }
 
 class _NotePageState extends State<NotePage> {
-
   late TextEditingController titleController;
   late TextEditingController contentController;
 
   FocusNode noteFocus = FocusNode();
 
-   @override
+  @override
   void initState() {
     super.initState();
     titleController = TextEditingController(text: widget.title ?? '');
@@ -34,7 +34,7 @@ class _NotePageState extends State<NotePage> {
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
-          }, 
+          },
           icon: Icon(Icons.arrow_back_ios_new_rounded),
         ),
         actions: [
@@ -44,8 +44,17 @@ class _NotePageState extends State<NotePage> {
             },
             icon: const Icon(Icons.more_horiz_rounded),
           ),
+          IconButton(
+            icon: Icon(
+              Provider.of<ThemeProvider>(context).isLightTheme
+                  ? Icons.light_mode
+                  : Icons.dark_mode,
+            ),
+            onPressed: () {
+              Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+            },
+          ),
         ],
-        
       ),
       body: SafeArea(
         child: Padding(
@@ -57,27 +66,19 @@ class _NotePageState extends State<NotePage> {
             children: [
               TextField(
                 controller: titleController,
-                style: const TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold
-                ),
+                style:
+                    const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 decoration: const InputDecoration(
-                  hintText: "Title",
-                  border: InputBorder.none
-                ),
+                    hintText: "Title", border: InputBorder.none),
               ),
               Expanded(
                 child: TextField(
                   controller: contentController,
                   focusNode: noteFocus,
                   maxLines: null,
-                  style: const TextStyle(
-                    fontSize: 20
-                  ),
+                  style: const TextStyle(fontSize: 20),
                   decoration: const InputDecoration(
-                    hintText: "Note",
-                    border: InputBorder.none
-                  ),
+                      hintText: "Note", border: InputBorder.none),
                 ),
               ),
             ],

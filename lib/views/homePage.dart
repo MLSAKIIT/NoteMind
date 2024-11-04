@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hacktoberxmlsa_app/providers/theme_provider.dart';
 import 'package:hacktoberxmlsa_app/services/colors.dart';
 import 'package:hacktoberxmlsa_app/views/noteCard.dart';
 import 'package:hacktoberxmlsa_app/views/notePage.dart';
 import 'package:hacktoberxmlsa_app/views/profile.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -37,18 +39,32 @@ class _HomePageState extends State<HomePage> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) {
                     return ProfilePage();
                   }));
                 },
                 child: CircleAvatar(
-                  foregroundImage: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnDNmpgYnTP4ELmIob69uKE1O0Rbrotna00g&s'),
+                  foregroundImage: NetworkImage(
+                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnDNmpgYnTP4ELmIob69uKE1O0Rbrotna00g&s'),
                   radius: screenWidth * 0.05,
                 ),
               ),
             ],
           ),
         ),
+        actions: [
+          IconButton(
+            icon: Icon(
+              Provider.of<ThemeProvider>(context).isLightTheme
+                  ? Icons.light_mode
+                  : Icons.dark_mode,
+            ),
+            onPressed: () {
+              Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+            },
+          ),
+        ],
       ),
       body: Stack(
         children: [
@@ -68,7 +84,8 @@ class _HomePageState extends State<HomePage> {
                   },
                   decoration: InputDecoration(
                       filled: false,
-                      contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      contentPadding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                       labelStyle: TextStyle(
                         color: Colors.white,
                       ),
@@ -78,7 +95,9 @@ class _HomePageState extends State<HomePage> {
                         borderSide: BorderSide(width: 2, color: purple),
                       ),
                       hintText: 'Search your notes here',
-                      hintStyle: TextStyle(color: Colors.white60, fontWeight: FontWeight.normal)),
+                      hintStyle: TextStyle(
+                          color: Colors.white60,
+                          fontWeight: FontWeight.normal)),
                 ),
                 SizedBox(
                   height: screenHeight * 0.02,
@@ -102,14 +121,16 @@ class _HomePageState extends State<HomePage> {
                         padding: const EdgeInsets.all(8.0),
                         child: NoteCard(
                             noteTitle: 'Note ${index + 1}',
-                            noteContent: 'This is the content of note ${index + 1}',
+                            noteContent:
+                                'This is the content of note ${index + 1}',
                             onTap: () {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => NotePage(
                                             title: 'Note ${index + 1}',
-                                            content: 'This is the content of note ${index + 1}',
+                                            content:
+                                                'This is the content of note ${index + 1}',
                                           )));
                             }),
                       );
@@ -141,11 +162,13 @@ class _HomePageState extends State<HomePage> {
                               MaterialPageRoute(
                                   builder: (context) => NotePage(
                                         title: 'Note ${index + 1}',
-                                        content: 'This is the content of note ${index + 1}',
+                                        content:
+                                            'This is the content of note ${index + 1}',
                                       )));
                         },
                         noteTitle: 'Quick Note ${index + 1}',
-                        noteContent: 'This is a quick note. Content preview for note ${index + 1}.',
+                        noteContent:
+                            'This is a quick note. Content preview for note ${index + 1}.',
                       );
                     },
                   ),
@@ -169,7 +192,8 @@ class _HomePageState extends State<HomePage> {
               right: screenWidth * 0.05,
               child: FloatingActionButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => NotePage()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => NotePage()));
                 },
                 child: Icon(Icons.add),
                 backgroundColor: purple,
